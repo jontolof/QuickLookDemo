@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281B826419DB3FE60046397F /* QLDelegateAndDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281B826319DB3FE60046397F /* QLDelegateAndDataSource.swift */; };
 		28B2E56219DB2A0900ED9398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2E56119DB2A0900ED9398 /* AppDelegate.swift */; };
 		28B2E56419DB2A0900ED9398 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2E56319DB2A0900ED9398 /* MasterViewController.swift */; };
 		28B2E56619DB2A0900ED9398 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2E56519DB2A0900ED9398 /* DetailViewController.swift */; };
@@ -14,6 +15,10 @@
 		28B2E56B19DB2A0900ED9398 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B2E56A19DB2A0900ED9398 /* Images.xcassets */; };
 		28B2E56E19DB2A0900ED9398 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B2E56C19DB2A0900ED9398 /* LaunchScreen.xib */; };
 		28B2E57A19DB2A0900ED9398 /* QuickLookDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B2E57919DB2A0900ED9398 /* QuickLookDemoTests.swift */; };
+		28B2E58419DB33F300ED9398 /* Uppdragsbeskrivning.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 28B2E58319DB33F300ED9398 /* Uppdragsbeskrivning.pdf */; };
+		28B2E58619DB342200ED9398 /* PulldownMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B2E58519DB342200ED9398 /* PulldownMenu.png */; };
+		28B2E58B19DB350800ED9398 /* Kalkyl.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 28B2E58919DB34AF00ED9398 /* Kalkyl.xlsx */; };
+		28B2E58C19DB350800ED9398 /* Planering.numbers in Resources */ = {isa = PBXBuildFile; fileRef = 28B2E58A19DB34F400ED9398 /* Planering.numbers */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		281B826319DB3FE60046397F /* QLDelegateAndDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QLDelegateAndDataSource.swift; sourceTree = "<group>"; };
 		28B2E55C19DB2A0900ED9398 /* QuickLookDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickLookDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B2E56019DB2A0900ED9398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28B2E56119DB2A0900ED9398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +44,10 @@
 		28B2E57319DB2A0900ED9398 /* QuickLookDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickLookDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B2E57819DB2A0900ED9398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28B2E57919DB2A0900ED9398 /* QuickLookDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookDemoTests.swift; sourceTree = "<group>"; };
+		28B2E58319DB33F300ED9398 /* Uppdragsbeskrivning.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Uppdragsbeskrivning.pdf; sourceTree = "<group>"; };
+		28B2E58519DB342200ED9398 /* PulldownMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PulldownMenu.png; sourceTree = "<group>"; };
+		28B2E58919DB34AF00ED9398 /* Kalkyl.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kalkyl.xlsx; sourceTree = "<group>"; };
+		28B2E58A19DB34F400ED9398 /* Planering.numbers */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Planering.numbers; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,7 @@
 			children = (
 				28B2E56119DB2A0900ED9398 /* AppDelegate.swift */,
 				28B2E56319DB2A0900ED9398 /* MasterViewController.swift */,
+				281B826319DB3FE60046397F /* QLDelegateAndDataSource.swift */,
 				28B2E56519DB2A0900ED9398 /* DetailViewController.swift */,
 				28B2E56719DB2A0900ED9398 /* Main.storyboard */,
 				28B2E56A19DB2A0900ED9398 /* Images.xcassets */,
@@ -93,6 +104,10 @@
 		28B2E55F19DB2A0900ED9398 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28B2E58919DB34AF00ED9398 /* Kalkyl.xlsx */,
+				28B2E58A19DB34F400ED9398 /* Planering.numbers */,
+				28B2E58519DB342200ED9398 /* PulldownMenu.png */,
+				28B2E58319DB33F300ED9398 /* Uppdragsbeskrivning.pdf */,
 				28B2E56019DB2A0900ED9398 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -195,8 +210,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B2E58B19DB350800ED9398 /* Kalkyl.xlsx in Resources */,
+				28B2E58C19DB350800ED9398 /* Planering.numbers in Resources */,
+				28B2E58619DB342200ED9398 /* PulldownMenu.png in Resources */,
 				28B2E56919DB2A0900ED9398 /* Main.storyboard in Resources */,
 				28B2E56E19DB2A0900ED9398 /* LaunchScreen.xib in Resources */,
+				28B2E58419DB33F300ED9398 /* Uppdragsbeskrivning.pdf in Resources */,
 				28B2E56B19DB2A0900ED9398 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +236,7 @@
 			files = (
 				28B2E56619DB2A0900ED9398 /* DetailViewController.swift in Sources */,
 				28B2E56419DB2A0900ED9398 /* MasterViewController.swift in Sources */,
+				281B826419DB3FE60046397F /* QLDelegateAndDataSource.swift in Sources */,
 				28B2E56219DB2A0900ED9398 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +431,7 @@
 				28B2E57F19DB2A0900ED9398 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28B2E58019DB2A0900ED9398 /* Build configuration list for PBXNativeTarget "QuickLookDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +440,7 @@
 				28B2E58219DB2A0900ED9398 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

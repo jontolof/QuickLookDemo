@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import QuickLook
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, QLPreviewControllerDelegate, QLPreviewControllerDataSource {
 
 	var detailViewController: DetailViewController? = nil
-	var objects = NSMutableArray()
+	var objects = NSMutableArray(array: ["Uppdragsbeskrivning.pdf", "PulldownMenu.png", "Planering.numbers", "Kalkyl.xlsx"])
 
 
 	override func awakeFromNib() {
@@ -24,7 +25,10 @@ class MasterViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		// Do any additional setup after loading the view, typically from a nib.
+		title = "Files available for preview"
+		
 		self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
 		let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
@@ -48,16 +52,16 @@ class MasterViewController: UITableViewController {
 
 	// MARK: - Segues
 
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "showDetail" {
-		    if let indexPath = self.tableView.indexPathForSelectedRow() {
-		        let object = objects[indexPath.row] as NSDate
-		        let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-		        controller.detailItem = object
-		        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-		        controller.navigationItem.leftItemsSupplementBackButton = true
-		    }
+	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+		if identifier == "showDetail" {
+			return false
 		}
+		else {
+			return true
+		}
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 	}
 
 	// MARK: - Table View
@@ -73,25 +77,59 @@ class MasterViewController: UITableViewController {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-		let object = objects[indexPath.row] as NSDate
-		cell.textLabel?.text = object.description
+		let title = objects[indexPath.row] as String
+		cell.textLabel?.text = title
 		return cell
 	}
 
-	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-		// Return false if you do not want the specified item to be editable.
-		return true
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		var vc: DetailViewController = DetailViewController()
+		vc.delegate = self
+		vc.dataSource = self
+		vc.currentPreviewItemIndex = indexPath.row
+		self.navigationController?.pushViewController(vc, animated: true)
 	}
-
-	override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-		if editingStyle == .Delete {
-		    objects.removeObjectAtIndex(indexPath.row)
-		    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-		} else if editingStyle == .Insert {
-		    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+	
+	// MARK: - QLPreviewControllerDataSource
+	func numberOfPreviewItemsInPreviewController(controller: QLPreviewController!) -> Int {
+		return 1 //objects.count
+	}
+	
+	func previewController(controller: QLPreviewController!, previewItemAtIndex index: Int) -> QLPreviewItem! {
+		var file: String = objects[index] as String
+		var fileComponents: Array = file.componentsSeparatedByString(".")
+		
+		var path: String? = NSBundle.mainBundle().pathForResource(fileComponents[0], ofType: fileComponents[1])
+		
+		if let aPath = path {
+			return NSURL.fileURLWithPath(aPath)
+		}
+		else {
+			return nil
 		}
 	}
 
-
+	// MARK: QLPreviewControllerDelegate
+	
+	// Optional
+	/*func previewController(controller: QLPreviewController!, frameForPreviewItem item: QLPreviewItem!, inSourceView view: AutoreleasingUnsafeMutablePointer<UIView?>) -> CGRect {
+		return CGRectZero
+	}
+	
+	func previewController(controller: QLPreviewController!, transitionImageForPreviewItem item: QLPreviewItem!, contentRect: UnsafeMutablePointer<CGRect>) -> UIImage! {
+		return nil
+	}
+	
+	func previewControllerWillDismiss(controller: QLPreviewController!) {
+		
+	}
+	
+	func previewControllerDidDismiss(controller: QLPreviewController!) {
+		
+	}
+	
+	func previewController(controller: QLPreviewController!, shouldOpenURL url: NSURL!, forPreviewItem item: QLPreviewItem!) -> Bool {
+		return true
+	}*/
 }
 
