@@ -15,34 +15,15 @@ class PPPreviewController: QLPreviewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a
-        currentPreviewItemIndex = 0
-		
-
+		// Do any additional setup after loading the view, typically from
     }
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		
-
-		
-		switchBarBlock()
 	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
-	}
-    
-    func compose(sender: AnyObject?) {
-        println("Ping")
-    }
-
-	func switchBars(sender: AnyObject?) {
-		switchBarBlock()
-	}
-	
-	override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-		println("TOUCH!!!")
 	}
 }
 

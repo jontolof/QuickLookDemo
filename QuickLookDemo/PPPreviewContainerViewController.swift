@@ -17,13 +17,14 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.greenColor()
+        self.view.backgroundColor = UIColor.whiteColor()
+		
+		
         // Do any additional setup after loading the view.
         previewController.documents = documents
         previewController.delegate = self
         previewController.dataSource = self
 		previewController.currentPreviewItemIndex = currentPreviewIndex
-		previewController.switchBarBlock = {self.switchBars(nil)}
 		
         addChildViewController(previewController)
         view.addSubview(previewController.view)
@@ -36,11 +37,9 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
         }*/
 		
 		
-		var touchView = UIView(frame: CGRectZero)
+		/*var touchView = UIView(frame: CGRectZero)
         touchView.setTranslatesAutoresizingMaskIntoConstraints(false)
 		touchView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
-		/*var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "switchBars:")
-		touchView.gestureRecognizers = [tapGR]*/
 		self.view.addSubview(touchView)
         
         var viewDictionary: Dictionary = ["touchView" : touchView]
@@ -48,12 +47,13 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
         var verticalConstraints: NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-(10)-[touchView]-(10)-|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: ["touchView" : touchView])
         var allConstraints: Array = horizontalConstraints.arrayByAddingObjectsFromArray(verticalConstraints)
         
-        self.view.addConstraints(allConstraints)
+        self.view.addConstraints(allConstraints)*/
 		
         let flex : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         let item : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "compose:")
         self.toolbarItems = [flex, item, flex]
         navigationController!.toolbarHidden = false
+		navigationController!.navigationBarHidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,5 +125,4 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
     func previewController(controller: QLPreviewController!, shouldOpenURL url: NSURL!, forPreviewItem item: QLPreviewItem!) -> Bool {
         return true
     }
-
 }
