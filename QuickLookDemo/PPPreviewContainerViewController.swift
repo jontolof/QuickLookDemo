@@ -13,30 +13,41 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
     let previewController: PPPreviewController = PPPreviewController()
     var documents: Array<String> = Array()
     var currentPreviewIndex: Int = 0
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.redColor()
+        self.view.backgroundColor = UIColor.greenColor()
         // Do any additional setup after loading the view.
         previewController.documents = documents
         previewController.delegate = self
         previewController.dataSource = self
-        previewController.currentPreviewItemIndex = currentPreviewIndex
-        
-        addChildViewController(previewController)
+		previewController.currentPreviewItemIndex = currentPreviewIndex
+		previewController.switchBarBlock = {self.switchBars()}
+		
+/*        addChildViewController(previewController)
         view.addSubview(previewController.view)
         previewController.view.center = view.center
-        previewController.didMoveToParentViewController(self)
+        previewController.didMoveToParentViewController(self)*/
         
         
         /*if let myToolbarItems = self.toolbarItems {
         println("Toolbar items: " + myToolbarItems.description)
         }*/
-        
-        var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "switchBars:")
-        self.view.gestureRecognizers = [tapGR]
-        
+		
+		
+		var touchView = UIView()
+		touchView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.3)
+		
+		var viewDictionary: Dictionary = ["touchView" : touchView]
+		var constraints: NSLayoutConstraint = NSLayoutConstraint.constraintsWithVisualFormat("h: | view |", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDictionary)
+		
+		
+		var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "switchBars:")
+		touchView.gestureRecognizers = [tapGR]
+		
+		self.view.addSubview(touchView)
+		
         let flex : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         let item : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "compose:")
         self.toolbarItems = [flex, item, flex]
@@ -50,7 +61,7 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
     
 
     // MARK: - Gesture Actions
-    func switchBars(sender: AnyObject?) {
+    func switchBars() {
         if (navigationController!.toolbarHidden) {
             navigationController!.setToolbarHidden(false, animated: true)
             navigationController!.setNavigationBarHidden(false, animated: true)
