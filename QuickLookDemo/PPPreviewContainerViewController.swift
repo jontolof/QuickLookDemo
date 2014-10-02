@@ -23,12 +23,12 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
         previewController.delegate = self
         previewController.dataSource = self
 		previewController.currentPreviewItemIndex = currentPreviewIndex
-		previewController.switchBarBlock = {self.switchBars()}
+		previewController.switchBarBlock = {self.switchBars(nil)}
 		
-/*        addChildViewController(previewController)
+        addChildViewController(previewController)
         view.addSubview(previewController.view)
         previewController.view.center = view.center
-        previewController.didMoveToParentViewController(self)*/
+        previewController.didMoveToParentViewController(self)
         
         
         /*if let myToolbarItems = self.toolbarItems {
@@ -36,17 +36,19 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
         }*/
 		
 		
-		var touchView = UIView()
-		touchView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.3)
-		
-		var viewDictionary: Dictionary = ["touchView" : touchView]
-		var constraints: NSLayoutConstraint = NSLayoutConstraint.constraintsWithVisualFormat("h: | view |", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: viewDictionary)
-		
-		
-		var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "switchBars:")
-		touchView.gestureRecognizers = [tapGR]
-		
+		var touchView = UIView(frame: CGRectZero)
+        touchView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		touchView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
+		/*var tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "switchBars:")
+		touchView.gestureRecognizers = [tapGR]*/
 		self.view.addSubview(touchView)
+        
+        var viewDictionary: Dictionary = ["touchView" : touchView]
+        var horizontalConstraints: NSArray = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(10)-[touchView]-(10)-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: ["touchView" : touchView])
+        var verticalConstraints: NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-(10)-[touchView]-(10)-|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: ["touchView" : touchView])
+        var allConstraints: Array = horizontalConstraints.arrayByAddingObjectsFromArray(verticalConstraints)
+        
+        self.view.addConstraints(allConstraints)
 		
         let flex : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         let item : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "compose:")
@@ -61,7 +63,7 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
     
 
     // MARK: - Gesture Actions
-    func switchBars() {
+    func switchBars(sender: AnyObject?) {
         if (navigationController!.toolbarHidden) {
             navigationController!.setToolbarHidden(false, animated: true)
             navigationController!.setNavigationBarHidden(false, animated: true)
