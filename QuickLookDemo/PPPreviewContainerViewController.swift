@@ -19,7 +19,6 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
 
         self.view.backgroundColor = UIColor.whiteColor()
 		
-		
         // Do any additional setup after loading the view.
         previewController.documents = documents
         previewController.delegate = self
@@ -31,23 +30,7 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
         previewController.view.center = view.center
         previewController.didMoveToParentViewController(self)
         
-        
-        /*if let myToolbarItems = self.toolbarItems {
-        println("Toolbar items: " + myToolbarItems.description)
-        }*/
-		
-		
-		/*var touchView = UIView(frame: CGRectZero)
-        touchView.setTranslatesAutoresizingMaskIntoConstraints(false)
-		touchView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
-		self.view.addSubview(touchView)
-        
-        var viewDictionary: Dictionary = ["touchView" : touchView]
-        var horizontalConstraints: NSArray = NSLayoutConstraint.constraintsWithVisualFormat("H:|-(10)-[touchView]-(10)-|", options: NSLayoutFormatOptions.AlignAllLeft, metrics: nil, views: ["touchView" : touchView])
-        var verticalConstraints: NSArray = NSLayoutConstraint.constraintsWithVisualFormat("V:|-(10)-[touchView]-(10)-|", options: NSLayoutFormatOptions.AlignAllTop, metrics: nil, views: ["touchView" : touchView])
-        var allConstraints: Array = horizontalConstraints.arrayByAddingObjectsFromArray(verticalConstraints)
-        
-        self.view.addConstraints(allConstraints)*/
+
 		
         let flex : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         let item : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Compose, target: self, action: "compose:")
@@ -73,14 +56,6 @@ class PPPreviewContainerViewController: UIViewController, QLPreviewControllerDat
             navigationController!.setNavigationBarHidden(true, animated: true)
         }
     }
-    
-    /*// MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }*/
     
     // MARK: - QLPreviewControllerDataSource
     func numberOfPreviewItemsInPreviewController(controller: QLPreviewController!) -> Int {

@@ -11,7 +11,6 @@ import QuickLook
 
 class PPPreviewController: QLPreviewController {
 	var documents: Array<String> = Array()
-	var switchBarBlock: ()->() = {}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
